@@ -8,11 +8,19 @@
  *************************************************************/
 
 window.onload = function() {
-    const boundary = document.getElementById("boundary1");
-    boundary.onmouseover = touchBoundary;
+    const boundaries = document.getElementsByClassName("boundary");
+    for (var i = 0; i < boundaries.length; i++)
+    {
+        boundaries[i].onmouseover = touchBoundary;
+    }
 }
 
 function touchBoundary() {
-    const boundary = document.getElementById("boundary1");
-    boundary.style.backgroundColor = "#ff8888";
+    const boundaries = document.getElementsByClassName("boundary");
+    for (var i = 0; i < boundaries.length; i++)
+    {
+        boundaries[i].style.backgroundColor = "#ff8888";
+    }
+    const example_boundary = document.getElementsByClassName("boundary example");
+    example_boundary[0].style.backgroundColor = "#eeeeee";
 }
