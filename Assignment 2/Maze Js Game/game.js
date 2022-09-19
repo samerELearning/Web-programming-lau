@@ -121,7 +121,7 @@ function reset() {
  */
 function cheat() {
 
-    if (touch < 1)
+    if (touch < 1 && started > 0)
     {
         message.innerText = "No Cheating!!";
         touch++;
