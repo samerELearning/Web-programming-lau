@@ -28,7 +28,7 @@ window.onload = function() {
 
     //start.addEventListener("mouseover", touchBoundary);
 
-    start.onmouseover = touchBoundary;
+    start.onmouseover = touchStart;
     end.onmouseover = won;
 
     for (var i = 0; i < boundaries.length - 1; i++)
@@ -39,22 +39,27 @@ window.onload = function() {
 
 
 /**
- * This function is called when the 'start' button is touched
+ * This function is called when the 'start' button is touched.
+ * The purpose of this function is to reset the number of boundary
+ * touches to 0, and set 'started' to 1.
  */
-function touchBoundary() {
+function touchStart() {
     
     started = 1;//Game started
+    touch   = 0;
 }
 
 /**
  * This function is called when boundaries are touched, while moving the cursor
  * from start to end.
+ * The purpose of this function is to decrease the score by 10 and output it
+ * for the user, if the game started and a boundary has been touched.
  */
 function lost() {
     
     if ( started > 0 && touch < 1)
     {
-        //Only decreases score if boundaries are touched once per session
+    //Only decreases score if boundaries are touched once per session
         touch++;
         score -= 10;
         
@@ -70,7 +75,9 @@ function lost() {
 
 /**
  * This function is called when the end button is touched after touching
- * the start, without touching any wall
+ * the start, without touching any wall.
+ * The purpose of this function is to increase the score by 5 and output it
+ * for the user, if the game started and no boundary has been touched.
  */
  function won() {
     
