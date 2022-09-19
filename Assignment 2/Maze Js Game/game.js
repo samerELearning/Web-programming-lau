@@ -38,7 +38,9 @@ window.onload = function() {
     for (var i = 0; i < boundaries.length - 1; i++)
     {
         boundaries[i].onmouseover = lost;
-    }    
+    }
+
+    userLogIn();
 }
 
 
@@ -133,7 +135,28 @@ function cheat() {
  */
 function userLogIn() {
 
-    username = prompt("Enter username: ");
+    username = prompt("Username: ");
+
+    if (usernameAvailability() != null)
+    {
+    //If username does exist in the local storage
+        password = prompt("Password: ");
+
+        while (usernameAvailability.pass != password)
+        {
+        //As long as password does not exist in local storage
+            password = prompt("Wrong passwrd! Try again: ");
+        }
+
+        score = JSON.parse(localStorage.getItem(username)).score;
+    }
+    else
+    {
+        password    = prompt("Password: ");
+        const user  = {name: username, pass: password, score: 0};
+        localStorage.setItem(username, JSON.stringify(user));
+        score       = user.score;
+    }
 
 }
 
