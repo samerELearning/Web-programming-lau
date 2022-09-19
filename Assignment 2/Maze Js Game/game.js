@@ -26,7 +26,7 @@ window.onload = function() {
     start    = document.getElementById("start");
     end      = document.getElementById("end");
     cheating = document.getElementById("game");
-    score    = 0;
+    //score    = 0;
     touch    = 0;
     started  = 0;
 
@@ -41,6 +41,8 @@ window.onload = function() {
     }
 
     userLogIn();
+
+    score = JSON.parse(localStorage.getItem(username)).score;
 }
 
 
@@ -135,17 +137,18 @@ function cheat() {
  */
 function userLogIn() {
 
-    username = prompt("Username: ");
+    username            = prompt("Username: ");
+    const avalability   = usernameAvailability();
 
-    if (usernameAvailability() != null)
+    if (avalability != null)
     {
     //If username does exist in the local storage
-        password = prompt("Password: ");
+        password = String(prompt("Password: "));
 
-        while (usernameAvailability.pass != password)
+        while (String(avalability.pass) != password)
         {
         //As long as password does not exist in local storage
-            password = prompt("Wrong passwrd! Try again: ");
+            password = String(prompt("Wrong passwrd! Try again: "));
         }
 
         score = JSON.parse(localStorage.getItem(username)).score;
@@ -167,5 +170,6 @@ function userLogIn() {
  */
 function usernameAvailability() {
 
-    return JSON.parse(localStorage.getItem(username));
+    const available = JSON.parse(localStorage.getItem(username));
+    return available;
 }
