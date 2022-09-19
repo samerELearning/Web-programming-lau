@@ -9,9 +9,10 @@
 
 let message;//Stores messages that will show on the page
 let score;//keeps track of the score
-let touch;//Keeps track of number of times the boundaries are touched
+let touch;//Keeps track of number of times the boundaries or end button are touched
 let start;//holds 'start' element in html file
 let end;//holds 'end' element in html file
+let started;//Assigned '1' if the game started
 
 const boundaries = document.getElementsByClassName("boundary");
 const example_boundary = document.getElementsByClassName("boundary example");
@@ -23,9 +24,26 @@ window.onload = function() {
     end     = document.getElementById("end");
     score   = 0;
     touch   = 0;
+    started = 0;
 
-    start.addEventListener("mouseover", touchBoundary);
+    //start.addEventListener("mouseover", touchBoundary);
+
+    start.onmouseover = touchBoundary;
+    end.onmouseover = won;
+
+    for (var i = 0; i < boundaries.length - 1; i++)
+    {
+        boundaries[i].onmouseover = lost;
+    }    
+}
+
+
+/**
+ * This function is called when the 'start' button is touched
+ */
+function touchBoundary() {
     
+    started = 1;//Game started
 }
 
 /**
@@ -34,27 +52,33 @@ window.onload = function() {
  */
 function lost() {
     
-    touch++;
-    
-    if (touch < 2)
+    if ( started > 0 && touch < 1)
     {
         //Only decreases score if boundaries are touched once per session
+        touch++;
         score -= 10;
+        
+        for (var i = 0; i < boundaries.length - 1; i++)
+        {
+            boundaries[i].style.backgroundColor = "#ff8888";
+        }
+        
+        message.innerText = "You lost! Score: " + score;
     }
-    
-    for (var i = 0; i < boundaries.length - 1; i++)
-    {
-        boundaries[i].style.backgroundColor = "#ff8888";
-    }
-    
-    message.innerText = "You lost! Score: " + score;
     
 }
 
-function touchBoundary() {
+/**
+ * This function is called when the end button is touched after touching
+ * the start, without touching any wall
+ */
+ function won() {
     
-    for (var i = 0; i < boundaries.length - 1; i++)
+    if (started > 0 && touch < 1)
     {
-        boundaries[i].onmouseover = lost;
+    //If the game started and no boundary is touched yet
+        score += 5;
+        touch++;
+        message.innerText = "You won! Score: " + score;
     }
 }
