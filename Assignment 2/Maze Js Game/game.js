@@ -9,14 +9,16 @@
 
 let message;//Stores messages that will show on the page
 let score;//keeps track of the score
-let touch;//Keeps track of number of times the boundaries or end button are touched
+let touch;//Keeps track of number of times the boundaries or 'end' button are touched
 let start;//holds 'start' element in html file
 let end;//holds 'end' element in html file
 let started;//Assigned '1' if the game started
 let cheating;//holds 'game' element in html file
+let username;//Assigned the name of the user
+let password;//Assigned the password of the user
 
-const boundaries = document.getElementsByClassName("boundary");
-const example_boundary = document.getElementsByClassName("boundary example");
+const boundaries        = document.getElementsByClassName("boundary");
+const example_boundary  = document.getElementsByClassName("boundary example");
 
 window.onload = function() {
 
@@ -122,4 +124,25 @@ function cheat() {
         message.innerText = "No Cheating!!";
         touch++;
     }
+}
+
+/**
+ * The purpose of this function is to prompt the user for his name and
+ * password in order to save his progress in the local storage of the
+ * browser.
+ */
+function userLogIn() {
+
+    username = prompt("Enter username: ");
+
+}
+
+/**
+ * This function is called when the user enters their name.
+ * The purpose of this function is to check whether the user exists
+ * in the local storage of the browser or not.
+ */
+function usernameAvailability() {
+
+    return JSON.parse(localStorage.getItem(username));
 }
