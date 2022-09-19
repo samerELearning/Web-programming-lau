@@ -13,23 +13,25 @@ let touch;//Keeps track of number of times the boundaries or end button are touc
 let start;//holds 'start' element in html file
 let end;//holds 'end' element in html file
 let started;//Assigned '1' if the game started
+let cheating;//holds 'game' element in html file
 
 const boundaries = document.getElementsByClassName("boundary");
 const example_boundary = document.getElementsByClassName("boundary example");
 
 window.onload = function() {
 
-    message = document.getElementById("status");
-    start   = document.getElementById("start");
-    end     = document.getElementById("end");
-    score   = 0;
-    touch   = 0;
-    started = 0;
+    message  = document.getElementById("status");
+    start    = document.getElementById("start");
+    end      = document.getElementById("end");
+    cheating = document.getElementById("game");
+    score    = 0;
+    touch    = 0;
+    started  = 0;
 
-    //start.addEventListener("mouseover", touchBoundary);
-
-    start.onmouseover = touchStart;
-    end.onmouseover = won;
+    start.onmouseover       = touchStart;
+    start.onclick           = reset;
+    end.onmouseover         = won;
+    cheating.onmouseleave   = cheat;
 
     for (var i = 0; i < boundaries.length - 1; i++)
     {
@@ -41,12 +43,19 @@ window.onload = function() {
 /**
  * This function is called when the 'start' button is touched.
  * The purpose of this function is to reset the number of boundary
- * touches to 0, and set 'started' to 1.
+ * touches to 0, and reset the boundarie color to grey.
  */
 function touchStart() {
     
     started = 1;//Game started
     touch   = 0;
+
+    for (var i = 0; i < boundaries.length - 1; i++)
+    {
+        boundaries[i].style.backgroundColor = "#eeeeee";
+    }
+        
+    message.innerText = "Score: " + score;
 }
 
 /**
@@ -87,5 +96,30 @@ function lost() {
         score += 5;
         touch++;
         message.innerText = "You won! Score: " + score;
+    }
+}
+
+/**
+ * This function is called when the 'start' button is clicked.
+ * The purpose of this function is to reset the score to 0, and the boundary
+ * colors to grey.
+ */
+function reset() {
+
+    message.innerText = "Begin by moving your mouse over the \"S\".";
+    score             = 0;
+}
+
+/**
+ * This function is called when the cursor is outside of the maze.
+ * The purpose of this function is to change the content of 'message',
+ * and output it to the user.
+ */
+function cheat() {
+
+    if (touch < 1)
+    {
+        message.innerText = "No Cheating!!";
+        touch++;
     }
 }
