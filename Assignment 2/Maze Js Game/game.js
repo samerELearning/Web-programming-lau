@@ -7,20 +7,35 @@
  * Last modified on Sunday, 18 of September 2022
  *************************************************************/
 
+let message;//Stores messages that will show on the page
+let score;//keeps track of the score
+
+const boundaries = document.getElementsByClassName("boundary");
+const example_boundary = document.getElementsByClassName("boundary example");
+
 window.onload = function() {
-    const boundaries = document.getElementsByClassName("boundary");
-    for (var i = 0; i < boundaries.length; i++)
+
+    message = document.getElementById("status");
+    score   = 0;
+
+    for (var i = 0; i < boundaries.length - 1; i++)
     {
         boundaries[i].onmouseover = touchBoundary;
     }
 }
-
+/*
+    This function is called when boundaries are touched, while moving the cursor
+    from start to end.
+*/
 function touchBoundary() {
-    const boundaries = document.getElementsByClassName("boundary");
-    for (var i = 0; i < boundaries.length; i++)
+
+    for (var i = 0; i < boundaries.length - 1; i++)
     {
+    //Changing color of boundaries to red
         boundaries[i].style.backgroundColor = "#ff8888";
     }
-    const example_boundary = document.getElementsByClassName("boundary example");
-    example_boundary[0].style.backgroundColor = "#eeeeee";
+
+    score -= 10;
+    message.innerText = "You lost! Score: " + score;
+
 }
