@@ -16,6 +16,7 @@ let started;//Assigned '1' if the game started
 let cheating;//holds 'game' element in html file
 let username;//Assigned the name of the user
 let password;//Assigned the password of the user
+let modify;//Assigned the user's object to modify values
 
 const boundaries        = document.getElementsByClassName("boundary");
 const example_boundary  = document.getElementsByClassName("boundary example");
@@ -26,7 +27,6 @@ window.onload = function() {
     start    = document.getElementById("start");
     end      = document.getElementById("end");
     cheating = document.getElementById("game");
-    //score    = 0;
     touch    = 0;
     started  = 0;
 
@@ -42,7 +42,7 @@ window.onload = function() {
 
     userLogIn();
 
-    score = JSON.parse(localStorage.getItem(username)).score;
+    score = JSON.parse(localStorage.getItem(username));
 }
 
 
@@ -61,7 +61,7 @@ function touchStart() {
         boundaries[i].style.backgroundColor = "#eeeeee";
     }
         
-    message.innerText = "Score: " + score;
+    message.innerText = "Score: " + score.score;
 }
 
 /**
@@ -76,14 +76,17 @@ function lost() {
     {
     //Only decreases score if boundaries are touched once per session
         touch++;
-        score -= 10;
+        modify          = JSON.parse(localStorage.getItem(username));
+        modify.score    -= 10;
+        localStorage.setItem(username, JSON.stringify(modify));
+        score           = JSON.parse(localStorage.getItem(username));
         
         for (var i = 0; i < boundaries.length - 1; i++)
         {
             boundaries[i].style.backgroundColor = "#ff8888";
         }
         
-        message.innerText = "You lost! Score: " + score;
+        message.innerText = "You lost! Score: " + score.score;
     }
     
 }
@@ -99,9 +102,12 @@ function lost() {
     if (started > 0 && touch < 1)
     {
     //If the game started and no boundary is touched yet
-        score += 5;
+        modify              = JSON.parse(localStorage.getItem(username));
+        modify.score        += 5;
+        localStorage.setItem(username, JSON.stringify(modify));
+        score               = JSON.parse(localStorage.getItem(username));
+        message.innerText   = "You won! Score: " + score.score;
         touch++;
-        message.innerText = "You won! Score: " + score;
     }
 }
 
@@ -113,7 +119,10 @@ function lost() {
 function reset() {
 
     message.innerText = "Begin by moving your mouse over the \"S\".";
-    score             = 0;
+    modify          = JSON.parse(localStorage.getItem(username));
+    modify.score    = 0;
+    localStorage.setItem(username, JSON.stringify(modify));
+    score           = JSON.parse(localStorage.getItem(username));
 }
 
 /**
@@ -151,7 +160,8 @@ function userLogIn() {
             password = String(prompt("Wrong passwrd! Try again: "));
         }
 
-        score = JSON.parse(localStorage.getItem(username)).score;
+        score               = avalability.score;
+        message.innerText   = "Begin by moving your mouse over the \"S\". Score: " + score;
     }
     else
     {
