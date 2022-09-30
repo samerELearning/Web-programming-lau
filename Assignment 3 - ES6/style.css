@@ -1,3 +1,7 @@
+body {
+    background-color: aliceblue;
+}
+
 h1 {
     text-align: center;
 }
@@ -7,10 +11,100 @@ div {
     width: 500px;
     height: 500px;
     left: 33.5%;
-    border: solid;
+    background-color: white;
 }
 
 img {
     width: 500px;
     height: 500px;
+}
+
+div.cell {
+    position: fixed;
+    width: 162px;
+    height: 160px;
+    background-color: red;
+    top: 10%;
+    border: solid;
+}
+
+div.cell + div.cell{
+    position: fixed;
+    width: 162px;
+    height: 160px;
+    background-color: yellow;
+    top: 10%;
+    left: 44.55%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 157px;
+    height: 160px;
+    background-color: green;
+    top: 10%;
+    left: 55.5%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell{
+    /**/
+    position: fixed;
+    width: 162px;
+    height: 165px;
+    background-color: purple;
+    top: 31.2%;
+    left: 33.5%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 162px;
+    height: 165px;
+    background-color: pink;
+    top: 31.2%;
+    left: 44.55%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 157px;
+    height: 165px;
+    background-color: blue;
+    top: 31.2%;
+    left: 55.5%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 162px;
+    height: 157px;
+    background-color: orange;
+    top: 53%;
+    left: 33.5%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 162px;
+    height: 157px;
+    background-color: fuchsia;
+    top: 53%;
+    left: 44.5%;
+    border: solid;
+}
+
+div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
+    position: fixed;
+    width: 157px;
+    height: 157px;
+    background-color: greenyellow;
+    top: 53%;
+    left: 55.5%;
+    border: solid;
 }
