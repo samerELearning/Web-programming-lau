@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+
+div {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    left: 35%;
+    border: solid;
+}
+
+img {
+    width: 500px;
+    height: 500px;
+}
