@@ -6,6 +6,10 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    margin-left: 15%;
+}
+
 div {
     position: fixed;
     width: 500px;
@@ -28,6 +32,12 @@ div.cell {
     border: solid;
 }
 
+#c1 > img {
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
+}
+
 div.cell + div.cell{
     position: fixed;
     width: 162px;
@@ -38,6 +48,12 @@ div.cell + div.cell{
     border: solid;
 }
 
+#c2 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
+}
+
 div.cell + div.cell + div.cell{
     position: fixed;
     width: 157px;
@@ -46,6 +62,12 @@ div.cell + div.cell + div.cell{
     top: 10%;
     left: 55.5%;
     border: solid;
+}
+
+#c3 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
 }
 
 div.cell + div.cell + div.cell + div.cell{
@@ -59,6 +81,12 @@ div.cell + div.cell + div.cell + div.cell{
     border: solid;
 }
 
+#c4 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
+}
+
 div.cell + div.cell + div.cell + div.cell + div.cell{
     position: fixed;
     width: 162px;
@@ -67,6 +95,12 @@ div.cell + div.cell + div.cell + div.cell + div.cell{
     top: 31.2%;
     left: 44.55%;
     border: solid;
+}
+
+#c5 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
 }
 
 div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
@@ -79,6 +113,12 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
     border: solid;
 }
 
+#c6 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
+}
+
 div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
     position: fixed;
     width: 162px;
@@ -87,6 +127,12 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
     top: 53%;
     left: 33.5%;
     border: solid;
+}
+
+#c7 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
 }
 
 div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
@@ -99,6 +145,12 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div
     border: solid;
 }
 
+#c8 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
+}
+
 div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell{
     position: fixed;
     width: 157px;
@@ -107,4 +159,10 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div
     top: 53%;
     left: 55.5%;
     border: solid;
+}
+
+#c9 > img{
+    width: 162px;
+    height: 160px;
+    visibility: hidden;
 }
