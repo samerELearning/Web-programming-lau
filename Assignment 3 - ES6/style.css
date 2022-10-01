@@ -166,3 +166,18 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div
     height: 160px;
     visibility: hidden;
 }
+
+.restart {
+    width: 100px;
+    height: 30px;
+    top: 80%;
+    left: 47%;
+    
+}
+
+.restart > button {
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    font-size: large;
+}
