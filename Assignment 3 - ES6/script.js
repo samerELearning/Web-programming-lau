@@ -7,3 +7,16 @@
  * Last modified on Saturday, 1st of October 2022
  *************************************************************/
 
+let message;//Stores message that will show on page
+let user_score;//Keeps track of user score
+let ai_score;//Keeps track of AI's score
+
+const cells = document.getElementsByTagName("img");
+
+
+
+window.onload = function() {
+
+    console.log(cells.length);
+    
+}
