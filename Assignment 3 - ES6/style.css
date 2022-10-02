@@ -31,10 +31,10 @@ div.cell {
 
 .cell > img {
     display: block;
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 150px;
-    height: 150px;
+    margin-top: 16%;
+    margin-left: 16%;
+    width: 120px;
+    height: 120px;
     visibility: hidden;
 }
 

@@ -12,7 +12,7 @@ let user_score;//Keeps track of user score
 let ai_score;//Keeps track of AI's score
 let turn;//Keeps track of player's turn
 
-const board  = [1,2,3,4,5,6,7,8,9];//Keeps track of board cells
+const board  = [0,1,2,3,4,5,6,7,8];//Keeps track of board cells
 
 const tokens = document.getElementsByTagName("img");
 const cells  = document.getElementsByClassName("cell");
@@ -23,7 +23,6 @@ window.onload = function() {
     turn        = 1;
     user_score  = 0;
     ai_score    = 0;
-
 }
 
 /**
@@ -36,9 +35,9 @@ function placeToken(index)
 {
     if (turn)
     {
-        tokens[index].style.visibility = "visible";
-        board[index - 1]               = "r";
-        turn                           = 0;
+        tokens[index + 1].style.visibility = "visible";
+        board[index]                       = "r";
+        turn                               = 0;
     }
 }
 
@@ -54,6 +53,8 @@ function restartGame()
         tokens[i].style.visibility = "hidden";
         board[i - 1]               = i;
     }
+
+    board[8] = 8;
 
     message.innerText   = "Let's Play Again!";
     turn                = 1;
@@ -100,23 +101,79 @@ function hasWon(board, player)
 }
 
 
-function minimax(new_board, player)
+function minimax(temp_board, player)
 {
-    const empty_cells = emptyCells(new_board);
+    const empty_cells = emptyCells(temp_board);
 
-    if (hasWon(new_board, "r"))
+    if (hasWon(temp_board, "r"))
     {
     //If human wins
-        return -10;
+        return {score:-10};
     }
-    else if (hasWon(new_board, "y"))
+    else if (hasWon(temp_board, "y"))
     {
     //If AI wins
-        return 10;
+        return {score:10};
     }
     else if (empty_cells.length === 0)
     {
     //If there's a tie
-        return 0;
+        return {score:0};
     }
+
+    const possible_moves = [];
+
+    for (var i = 0; i < empty_cells.length; i++)
+    {
+        const move = {};
+        move.index = temp_board[empty_cells[i]];
+
+        temp_board[empty_cells[i]] = player;
+
+        if (player == "y")
+        {
+            let result = minimax(temp_board, "r");
+            move.score = result.score;
+        }
+        else
+        {
+            let result = minimax(temp_board, "y");
+            move.score = result.score;
+        }
+
+        temp_board[empty_cells[i]] = move.index;
+        possible_moves.push(move);
+    }
+
+    let best_move;
+    let best_score;
+
+    if (player === "y")
+    {
+        best_score = -10000;
+
+        for (var i = 0; i < possible_moves.length; i++)
+        {
+            if (possible_moves[i].score > best_score)
+            {
+                best_score = possible_moves[i].score;
+                best_move  = i;
+            }
+        }
+    }
+    else
+    {
+        best_score = 10000;
+
+        for (var i = 0; i < possible_moves.length; i++)
+        {
+            if (possible_moves[i].score < best_score)
+            {
+                best_score = possible_moves[i].score;
+                best_move  = i;
+            }
+        }
+    }
+
+    return possible_moves[best_move];
 }
