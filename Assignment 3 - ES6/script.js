@@ -10,13 +10,25 @@
 let message;//Stores message that will show on page
 let user_score;//Keeps track of user score
 let ai_score;//Keeps track of AI's score
+let turn;//Keeps track of player's turn
 
-const cells = document.getElementsByTagName("img");
+
+const tokens = document.getElementsByTagName("img");
+const cells  = document.getElementsByClassName("cell");
 
 
 
 window.onload = function() {
-
-    console.log(cells.length);
     
+}
+
+/**
+ * This function is called when one of the cells is clicked.
+ * The purpose of this function is to set the token image
+ * to visible on the cell that was clicked by the user
+ * @param {Integer} index The index of the cell
+ */
+function placeToken(index)
+{
+    tokens[index].style.visibility = "visible";
 }
