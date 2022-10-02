@@ -20,15 +20,42 @@ const cells  = document.getElementsByClassName("cell");
 
 window.onload = function() {
     
+    message     = document.getElementById("message");
+    turn        = 1;
+    user_score  = 0;
+    ai_score    = 0;
+
+    console.log(message);
 }
 
 /**
- * This function is called when one of the cells is clicked.
+ * This function is called from the html file.
  * The purpose of this function is to set the token image
- * to visible on the cell that was clicked by the user
+ * to visible on the cell that was clicked by the user.
  * @param {Integer} index The index of the cell
  */
 function placeToken(index)
 {
-    tokens[index].style.visibility = "visible";
+    if (turn)
+    {
+    //If it's human's turn (turn == 1)
+        tokens[index].style.visibility = "visible";
+        turn                           = 0;
+    }
+}
+
+/**
+ * This function is called from the html file.
+ * The purpose of this function is to hide all token
+ * images, and reset the game.
+ */
+function restartGame()
+{
+    for (var i = 1; i < tokens.length; i++)
+    {
+        tokens[i].style.visibility = "hidden";
+    }
+
+    message.innerText   = "Let's Play Again!";
+    turn                = 1;
 }

@@ -56,7 +56,6 @@ div.cell + div.cell + div.cell{
 }
 
 div.cell + div.cell + div.cell + div.cell{
-    /**/
     position: fixed;
     width: 162px;
     height: 165px;
@@ -114,8 +113,7 @@ div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div.cell + div
     width: 100px;
     height: 30px;
     top: 80%;
-    left: 47%;
-    
+    left: 47%; 
 }
 
 .restart > button {
