@@ -12,11 +12,10 @@ let user_score;//Keeps track of user score
 let ai_score;//Keeps track of AI's score
 let turn;//Keeps track of player's turn
 
-
 const tokens = document.getElementsByTagName("img");
 const cells  = document.getElementsByClassName("cell");
 
-
+const board  = [1,2,3,4,5,6,7,8,9];
 
 window.onload = function() {
     
@@ -25,7 +24,6 @@ window.onload = function() {
     user_score  = 0;
     ai_score    = 0;
 
-    console.log(message);
 }
 
 /**
@@ -38,8 +36,8 @@ function placeToken(index)
 {
     if (turn)
     {
-    //If it's human's turn (turn == 1)
         tokens[index].style.visibility = "visible";
+        board[index - 1]               = "r";
         turn                           = 0;
     }
 }
@@ -54,8 +52,22 @@ function restartGame()
     for (var i = 1; i < tokens.length; i++)
     {
         tokens[i].style.visibility = "hidden";
+        board[i - 1]               = i;
     }
 
     message.innerText   = "Let's Play Again!";
     turn                = 1;
 }
+
+/**
+ * This function is called
+ * The purpose of this function is to return a list
+ * of empty board cells.
+ * @param {List} board The list of board cells
+ * @returns {List}     The list of empty board cells
+ */
+function emptyCells(board)
+{
+    return board.filter(c => c != "y" && c != "r");
+}
+

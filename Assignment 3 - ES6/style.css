@@ -30,8 +30,11 @@ div.cell {
 }
 
 .cell > img {
-    width: 162px;
-    height: 160px;
+    display: block;
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 150px;
+    height: 150px;
     visibility: hidden;
 }
 
