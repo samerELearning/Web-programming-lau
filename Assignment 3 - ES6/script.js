@@ -32,10 +32,10 @@ window.onload = function() {
 
 /**
  * This function is called from the html file.
- * The purpose of this function is to set the token image
+ * The purpose of this function is to set the red token image
  * to visible on the cell that was clicked by the user,
  * and to call the function 'aiPlaceToken(index)' to determine
- * and place AI's move.
+ * and place AI's move. And output message if user wins.
  * @param {Integer} index The index of the cell
  */
 function placeToken(index)
@@ -64,6 +64,14 @@ function placeToken(index)
 }
 
 
+/**
+ * This function is called in 'placeToken(index)' function.
+ * The purpose of this function is to change the red token image
+ * to yellow token image and set it to visible on the cell
+ * determined by the AI. And output a message if AI wins.
+ * if AI wins.
+ * @param {Integer} index The index of the cell
+ */
 function aiPlaceToken(index)
 {
     tokens[index + 1].src              = "img/yellow.png";
