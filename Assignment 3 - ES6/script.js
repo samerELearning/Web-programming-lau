@@ -23,6 +23,7 @@ window.onload = function() {
     turn        = 1;
     user_score  = 0;
     ai_score    = 0;
+
 }
 
 /**
@@ -39,6 +40,16 @@ function placeToken(index)
         board[index]                       = "r";
         turn                               = 0;
     }
+
+    console.log(minimax(board, "y").index);/////////////////////////////////////////////////////////////////////////
+}
+
+function aiPlaceToken(index)
+{
+    tokens[index].src              = "img/yellow.png";
+    tokens[index].style.visibility = "visible";
+    board[index]                   = "y";
+    turn                           = 1;
 }
 
 /**
@@ -51,7 +62,7 @@ function restartGame()
     for (var i = 1; i < tokens.length; i++)
     {
         tokens[i].style.visibility = "hidden";
-        board[i - 1]               = i;
+        board[i - 1]               = i - 1;
     }
 
     board[8] = 8;
@@ -101,7 +112,7 @@ function hasWon(board, player)
 }
 
 /**
- * This function is called
+ * This function is called in 'placeToken()' function
  * The purpose of this function is to determine the best move possible
  * by the AI, using recursion.
  * @param   {List}   temp_board The list of board cells
@@ -110,6 +121,7 @@ function hasWon(board, player)
  */
 function minimax(temp_board, player)
 {
+    console.log(1);//////////////////////////////////////////////////////////
     const empty_cells = emptyCells(temp_board);
 
     if (hasWon(temp_board, "r"))
