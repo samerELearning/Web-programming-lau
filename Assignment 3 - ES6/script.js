@@ -100,7 +100,14 @@ function hasWon(board, player)
     }
 }
 
-
+/**
+ * This function is called
+ * The purpose of this function is to determine the best move possible
+ * by the AI, using recursion.
+ * @param   {List}   temp_board The list of board cells
+ * @param   {String} player     'y' for AI or 'r' for human
+ * @returns {Object}            The best move out of all possible moves
+ */
 function minimax(temp_board, player)
 {
     const empty_cells = emptyCells(temp_board);
